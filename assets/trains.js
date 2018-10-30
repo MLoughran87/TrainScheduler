@@ -9,3 +9,25 @@
     messagingSenderId: "520656377702"
   };
   firebase.initializeApp(config);
+
+  var database = firebase.database();
+  var trains = [];
+
+  $("#addTrain").on("click", function () {
+      event.preventDefault();
+      var train = {};
+      train.name = $("#trainName").val().trim();
+      train.destination = $("#destination").val().trim();
+      train.firstTrainTime = $("#firstTrainTime").val().trim();
+      train.frequency = $("#frequency").val().trim();
+
+      database.ref().push({
+          name: train.name,
+          destination: train.destination,
+          firstTrainTime: train.firstTrainTime,
+          frequency: train.frequency,
+      });
+
+  });
+
+  
