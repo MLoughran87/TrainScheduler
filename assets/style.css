@@ -1,0 +1,17 @@
+.container {
+    width: 80%;
+
+}
+
+.billboard {
+    height: 90px;
+    background-color: brown;
+    text-align: center;
+    border: 20px;
+    margin: 20px;
+}
+
+.card-header {
+    background-color: red;
+    color: blue;
+}
