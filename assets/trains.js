@@ -1,4 +1,8 @@
 
+    $(document).ready(function(){
+        
+   
+
   // Initialize Firebase
   var config = {
     apiKey: "AIzaSyBSPyZXZHH64wZLsSgNNt7HwSOq3HGKFKw",
@@ -9,11 +13,14 @@
     messagingSenderId: "520656377702"
   };
   firebase.initializeApp(config);
+  // Uncaught error - firebase not definted? see error in console. 
 
+  //setting up database var for firebase, and the var for trains, an array
   var database = firebase.database();
   var trains = [];
 
-  $("#addTrain").on("click", function () {
+  //the submit button, calling id addtrain from input, onclick function take each field
+  $("#addTrain").on("click", function (event) {
       event.preventDefault();
       var train = {};
       train.name = $("#trainName").val().trim();
@@ -21,6 +28,8 @@
       train.firstTrainTime = $("#firstTrainTime").val().trim();
       train.frequency = $("#frequency").val().trim();
 
+      console.log(train)
+        // push each ref from above and push to firebase database. 
       database.ref().push({
           name: train.name,
           destination: train.destination,
@@ -30,4 +39,4 @@
 
   });
 
-  
+});
