@@ -41,7 +41,7 @@ $(document).ready(function () {
     });
 
     function updatetrainlist(train) {
-        var tbody = $("#trainSchedyleElem");
+        var tbody = $("#trainScheduleElem");
 
         var tr = $("<tr>");
         tbody.append(tr);
