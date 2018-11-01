@@ -68,18 +68,22 @@ $(document).ready(function () {
         train.name = childSnapshot.val().name;
         train.destination = childSnapshot.val().destination;
         train.firstTrainTime= childSnapshot.val().firstTrainTime;
-        train.frequency= childSnapshot.val().frequency;
+        train.frequency= parseInt(childSnapshot.val().frequency);
 
-        // calculate Next Arrival + Minutes away 
+        console.log(typeof train.frequency)
+        // calculate Next Arrival + Minutes away , switched from "m mm" to "kk", Switched back
         var firstFormat = "m mm";
         var calcMinutesAway = moment(train.frequency, firstFormat);
 
-        train.nextArrival= moment().diff(calcMinutesAway, "minutes");
+            // cant figure out to/fromNow, how to get LT to sync up an
+            //make it so next arrival is correct, switched 
+        train.nextArrival= moment().to(calcMinutesAway, "LT");
             if (train.nextArrival <=0){
                 train.nextArrival = 0;
             }
         console.log("next arrival " + train.nextArrival);
 
+        // keeps giving times in the 900's. 
         train.minutesAway = moment().diff(calcMinutesAway, "minutes")
         console.log("minutes away " + train.minutesAway);
 
