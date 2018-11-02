@@ -77,7 +77,7 @@ $(document).ready(function () {
 
             // cant figure out to/fromNow, how to get LT to sync up an
             //make it so next arrival is correct, switched 
-        train.nextArrival= moment().to(calcMinutesAway, "LT");
+        train.nextArrival= moment().to(calcMinutesAway, "HH:mm");
             if (train.nextArrival <=0){
                 train.nextArrival = 0;
             }
@@ -86,6 +86,9 @@ $(document).ready(function () {
         // keeps giving times in the 900's. 
         train.minutesAway = moment().diff(calcMinutesAway, "minutes")
         console.log("minutes away " + train.minutesAway);
+            // at 12:07 pm, added broomsfield line, started at 4:35 am,
+            // says 7 min away for 12:15 arrival, 150 min interval
+
 
         updatetrainlist(train)
     });
